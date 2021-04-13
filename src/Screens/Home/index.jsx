@@ -16,6 +16,7 @@ const StyledWrapSearch = Styled.div`
     width: 35%;
     text-align: center;
 `;
+
 export const Home = () => {
   const [location, setLocation] = useLocation();
   const formik = useFormik({

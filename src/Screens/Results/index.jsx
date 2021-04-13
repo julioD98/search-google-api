@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
 import Styled from "styled-components";
 import { ListResults } from "./../../Components/ListResult";
+import { SearchBar } from "./../../Components/SearchBar";
+import { Paginations } from "./../../Components/Pagination";
 
 const StyledWrapResults = Styled.div`
     width: 50%;
-    min-height: 100vh;
-    margin-left: 180px;
+    margin-left: 150px;
     margin-top: 30px;
+    margin-bottom: 30px;
 `;
 
 export const Results = () => {
@@ -18,9 +20,11 @@ export const Results = () => {
   }, []);
   return (
     <>
+      <SearchBar />
       <StyledWrapResults>
         <ListResults data={state} />
       </StyledWrapResults>
+      <Paginations />
     </>
   );
 };

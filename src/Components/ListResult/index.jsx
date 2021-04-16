@@ -2,9 +2,10 @@ import React from "react";
 import { Item, Loader } from "semantic-ui-react";
 
 export const ListResults = ({ data }) => {
+  console.log(data);
   return (
     <Item.Group>
-      {data ? (
+      {/* {data ? (
         data.map((item, i) => (
           <Item key={i}>
             <Item.Content>{item.name}</Item.Content>
@@ -12,7 +13,7 @@ export const ListResults = ({ data }) => {
         ))
       ) : (
         <Loader active />
-      )}
+      )} */}
     </Item.Group>
   );
 };

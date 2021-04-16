@@ -1,50 +1,24 @@
-import React from "react";
-import Styled from "styled-components";
-import { Input, Button, Form } from "semantic-ui-react";
-import { useFormik } from "formik";
-import { useLocation } from "wouter";
-
-const StyledWrap = Styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    width: 100%;
-    height: 100vh;
-`;
-const StyledWrapSearch = Styled.div`
-    width: 35%;
-    text-align: center;
-`;
+import React, { useState, useEffect } from "react";
+import { SearchBar } from "./../../Components/SearchBar";
+import { ListResults } from "./../../Components/ListResult";
+import { api_key, engine_id } from "./../../google.json";
 
 export const Home = () => {
-  const [location, setLocation] = useLocation();
-  const formik = useFormik({
-    initialValues: { search: "" },
-    onSubmit: (values) => {
-      values.search
-        ? setLocation(`/results/${values.search}`)
-        : setLocation(location);
-    },
-  });
+  const [query, setQuery] = useState(null);
+  const [search, setSearch] = useState(null);
+  useEffect(() => {
+    query
+      ? fetch(
+          `https://www.googleapis.com/customsearch/v1?key=${api_key}&cx=${engine_id}&q=${query}`
+        )
+          .then((r) => r.json())
+          .then((r) => setSearch(r))
+      : null;
+  }, []);
   return (
-    <StyledWrap>
-      <StyledWrapSearch>
-        <h1>Busca algo...</h1>
-        <Form onSubmit={formik.handleSubmit} size="large">
-          <Form.Field>
-            <Input
-              id="search"
-              name="search"
-              onChange={formik.handleChange}
-              value={formik.values.search}
-              icon="search"
-              iconPosition="left"
-            />
-          </Form.Field>
-          <Button type="submit">Buscar</Button>
-        </Form>
-      </StyledWrapSearch>
-    </StyledWrap>
+    <div>
+      <SearchBar setquery={setQuery} query={query} />
+      {query ? <ListResults data={search} /> : null}
+    </div>
   );
 };

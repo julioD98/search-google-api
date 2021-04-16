@@ -1,4 +1,5 @@
 {
     "api_key":"AIzaSyBvw49sSnRXTeyBAkrpC_ddNjKPTdP10Mo",
-    "engine_id":"58e74e9e5045ecb59"
+    "engine_id":"58e74e9e5045ecb59",
+    "uri":"https://www.googleapis.com/customsearch/v1?key=${api_key}&cx=${engine_id}&q=${state}"
 }

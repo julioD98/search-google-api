@@ -9,14 +9,17 @@ const StyledwrapForm = Styled.div`
   align-items: ${({ query }) => (query ? "flex-start" : "center;")};
   flex-direction: column;
   width: 100%;
-  min-height: ${({ query }) => (query ? "60px" : "100vh")};
+  min-height: ${({ query }) => (query ? "70px" : "100vh")};
+  box-shadow: ${({ query }) => (query ? "0px 2px 0px 0px #eeeeee" : "none")};
 `;
 
 const StyledForm = Styled(Form)`
   width: 35%;
   display: ${({ query }) => (query ? "flex" : "block")};
   text-align: ${({ query }) => (query ? "left" : "center")};
-  button{
+  margin-top:${({ query }) => (!query ? "0px" : "20px !important")};
+  margin-left:${({ query }) => (query ? "0px" : "30px !important")};
+  button{ 
     margin-top:${({ query }) => (query ? "0px" : "20px !important")};
   }
   h1{

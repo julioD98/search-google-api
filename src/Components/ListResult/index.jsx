@@ -12,12 +12,13 @@ export const ListResults = ({ data }) => {
   return (
     <StyledWrapResults>
       <Item.Group divided>
-        {data ? (
-          data.map((item, i) => (
+        {data.items ? (
+          data.items.map((item, i) => (
             <Item key={i}>
               <Item.Content>
-                <Item.Header>{item.name}</Item.Header>
-                <Item.Description>{item.body}</Item.Description>
+                <Item.Header>{item.title}</Item.Header>
+                <Item.Meta>{item.link}</Item.Meta>
+                <Item.Description>{item.snippet}</Item.Description>
               </Item.Content>
             </Item>
           ))

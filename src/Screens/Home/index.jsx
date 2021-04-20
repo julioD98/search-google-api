@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { SearchBar } from "./../../Components/SearchBar";
 import { ListResults } from "./../../Components/ListResult";
 import { Paginations } from "./../../Components/Pagination";
@@ -8,13 +8,15 @@ export const Home = () => {
   const [query, setQuery] = useState(null);
   const [search, setSearch] = useState(null);
   useEffect(() => {
-    fetch(`https://jsonplaceholder.typicode.com/comments`)
+    fetch(
+      `https://www.googleapis.com/customsearch/v1?key=${api_key}&cx=${engine_id}&q=${query}`
+    )
       .then((r) => r.json())
       .then((r) => setSearch(r));
-  }, []);
+  }, [query]);
   return (
     <div>
-      <SearchBar setquery={setQuery} query={query} />
+      <SearchBar setquery={setQuery} query={search} />
       {query ? <ListResults data={search} /> : null}
       <Paginations />
     </div>

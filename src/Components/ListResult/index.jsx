@@ -16,8 +16,12 @@ export const ListResults = ({ data }) => {
           data.items.map((item, i) => (
             <Item key={i}>
               <Item.Content>
-                <Item.Header>{item.title}</Item.Header>
                 <Item.Meta>{item.link}</Item.Meta>
+                <a href={item.link} target="_blank" rel="noreferrer">
+                  <Item.Header>
+                    <h3>{item.title}</h3>
+                  </Item.Header>
+                </a>
                 <Item.Description>{item.snippet}</Item.Description>
               </Item.Content>
             </Item>

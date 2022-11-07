@@ -11,10 +11,15 @@ const StyledWrapPagination = Styled.div`
     align-items: center;
 `;
 
-export const Paginations = () => {
+export const Pager = ({ search }) => {
+  console.log(search);
+  const pages = () => parseInt(search.searchInformation.totalResults) / 10;
+  const pagination = {
+    href: "www.google.com",
+  };
   return (
     <StyledWrapPagination>
-      <Pagination totalPages={100} activePage={1} />
+      <Pagination totalPages={pages()} activePage={1} pageItem={pagination} />
     </StyledWrapPagination>
   );
 };

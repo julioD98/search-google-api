@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { SearchBar } from "./../../Components/SearchBar";
 import { ListResults } from "./../../Components/ListResult";
-import { Paginations } from "./../../Components/Pagination";
+import { Pager } from "./../../Components/Pagination";
 import { api_key, engine_id } from "./../../google.json";
 
 export const Home = () => {
-  const [query, setQuery] = useState(null);
+  const [query, setQuery] = useState("");
   const [search, setSearch] = useState(null);
   useEffect(() => {
     fetch(
@@ -16,9 +16,9 @@ export const Home = () => {
   }, [query]);
   return (
     <div>
-      <SearchBar setquery={setQuery} query={search} />
+      <SearchBar setquery={setQuery} query={query} />
       {query ? <ListResults data={search} /> : null}
-      <Paginations />
+      {search && search.searchInformation ? <Pager search={search} /> : null}
     </div>
   );
 };
